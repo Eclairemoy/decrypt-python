@@ -1,7 +1,9 @@
-# Hello Function
-[Evervault](https://evervault.com) makes it easy to encrypt data at source, process it in a Cage — a secure, serverless function — and never store it unencrypted.
+# Decrypt Function
+[Evervault](https://evervault.com) makes it easy to encrypt data at source, process it in a secure, serverless function that you can re-build and deploy anytime.
 
-This is a simple Evervault Function example, to help get you up and running on the Evervault platform quickly.
+The best practice is to never let sensitive data touch your server or be stored at rest in your data stores. However, there may be cases where you need to decrypt data on your own server.
+
+This function will decrypt any data passed into it.
 
 ## Getting started with Evervault
 
@@ -11,7 +13,7 @@ This Function takes a payload that should contain a `name` key. Running the Func
 
 ## The steps
 1. Encrypt your data at source, using one of our SDKs.
-2. Process the encrypted data in a Function
+2. Process the encrypted data in a Function and return the decrypted data
 
 ### Encrypting at source
 ```python
@@ -25,15 +27,15 @@ evervault.init("<YOUR_API_KEY>")
 encrypted = evervault.encrypt({ "name": "Claude" })
 ```
 
-### Process your encrypted data in a Function
+### Obtain the encrypted data in a Function
 You should encrypt this payload using any SDKs, then run it in the Hello Function:
 
 ```python
 # Process the encrypted data in a Function
-result = evervault.run("<YOUR_CAGE_NAME>", encrypted)
+result = evervault.run("<YOUR_FUNCTION_NAME>", encrypted)
 ```
 
-## Understanding the Function
+## Return the decrypted data to your server
 This Function is very simple. Here is the full code:
 
 ```python
